@@ -1,0 +1,19 @@
+@import "vars.css";
+
+#about {
+    width: 50%;
+    margin: auto;
+}
+
+#suggest-box {
+    overflow: auto;
+    width: 50vw;
+    height: 20vh;
+    background-color: var(--bl-gray);
+    color: white;
+    resize: None;
+}
+
+#suggest-box:hover, #suggest-box:focus {
+    outline: none;
+}

@@ -1,0 +1,84 @@
+/* Define a media query for mobile devices */
+/* Define a container for the h2 and img elements */
+.welcome-container {
+  display: flex; /* Use flexbox layout to display the elements side by side */
+  justify-content: center; /* Center the elements horizontally */
+  align-items: center; /* Center the elements vertically */
+}
+
+/* Style the h2 element */
+.welcome-container h2 {
+  margin-right: 0; /* Remove the default margin */
+  padding-right: 0; /* Remove the default padding */
+  font-family: "Calibri, sans-serif", sans-serif; /* Use the Calibri font */
+}
+
+/* Style the img element */
+.welcome-container img {
+  height: 2em; /* Set the height of the image */
+  margin: 0 0.5em; /* Add some space between the h2 and img elements */
+}
+
+/*@media only screen and (max-width: 768px) {*/
+  /* Style the hamburger menu */
+  nav {
+    display: none;
+  }
+
+  nav ul {
+    background-color: var(--bl-gray);
+    color: white;
+    -webkit-text-stroke: 0.00625em black;
+    margin: 0;
+    padding: 0.5em;
+    text-align: center;
+  }
+
+  nav ul li {
+    display: block;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
+  }
+
+  nav ul li a:hover {
+    background-color: var(--gray);
+  }
+
+  .welcome-container img:hover {
+    cursor: grabbing;
+  }
+/*}*/
+
+/* Define a media query for desktop devices */
+/*@media only screen and (min-width: 769px) {*/
+/*  !* Style the nav links *!*/
+
+/*  .welcome-container img {*/
+/*    display: none;*/
+/*  }*/
+
+/*  nav ul {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    list-style: none;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*  }*/
+
+/*  nav ul li {*/
+/*    display: inline-block;*/
+/*  }*/
+
+/*  nav ul li a {*/
+/*    color: var(--l-blue);*/
+/*    text-decoration: none;*/
+/*  }*/
+
+/*  nav ul li a:hover {*/
+/*    background-color: var(--gray);*/
+/*  }*/
+/*}*/

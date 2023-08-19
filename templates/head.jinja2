@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    {% for sheet in stylesheets %}
+        <link rel="stylesheet" href="{{ sheet }}">
+    {% endfor %}
+    {% for js in javascript %}
+        <script type="text/javascript" src="{{ js }}"></script>
+    {% endfor %}
+</head>
+<body>

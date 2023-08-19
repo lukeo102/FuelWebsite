@@ -1,0 +1,19 @@
+/* Nav Bar */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li {
+    display: inline;
+}
+
+nav li a {
+    background-color: var(--bl-gray);
+    color: white;
+    display: inline-block;
+    padding: 1.25vh 1.7vw;
+    margin: 0.5vh 0.5vw;
+}

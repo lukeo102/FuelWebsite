@@ -1,0 +1,44 @@
+<a href="/login">Login & Register</a>
+{% if error %}
+    <section><h2>Unexpected error, please try again</h2></section>
+{% endif %}
+
+{% if register %}
+    <section><h2>Registration complete, please return to login page <a href="/login">here</a> to login</h2></section>
+{% endif %}
+
+{% if verify_error %}
+    <section><h2>Invalid verification code</h2></section>
+{% endif %}
+
+<p>Having troubles with verifying your email? Send your username from the email you registered with to lofuelwebs@gmail.com</p>
+
+<form method="post" name="new-code">
+    <h2>Send New Code</h2>
+    <label>
+        Username
+        <br>
+        <input type="text" name="username">
+    </label>
+    <label>
+        New Email
+        <br>
+        <input type="text" name="email">
+    </label>
+    <input type="submit" value="Submit">
+</form>
+
+<form method="post" name="new-email">
+    <h2>Change Email</h2>
+    <label>
+        Username
+        <br>
+        <input type="text" name="username">
+    </label>
+    <label>
+        New Email
+        <br>
+        <input type="text" name="email">
+    </label>
+    <input type="submit" value="Submit">
+</form>

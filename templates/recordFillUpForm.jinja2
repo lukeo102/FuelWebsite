@@ -1,0 +1,20 @@
+<h2>Record New Fill Up</h2>
+{% if processed != None %}
+    {% if processed %}
+        <p>Data Received</p>
+    {% endif %}
+{% endif %}
+<p>You can change your units and currency in settings</p>
+<form action="/" method="post">
+        <label for="amount">Amount ({{ units }})</label>
+        <br>
+        <input type="text" name="amount" required autocomplete="off">
+        <br>
+        <br>
+        <label for="cost">Cost ({{ currency }})</label>
+        <br>
+        <input type="text" name="cost" required autocomplete="off">
+        <br>
+        <br>
+        <input type="submit" name="submit" value="Record">
+</form>

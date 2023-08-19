@@ -1,0 +1,50 @@
+<section id="about">
+    <h2>About</h2>
+    {% if previous_page != None %}
+        <a href="{{ previous_page }}">Return to last page</a>
+    {% endif %}
+    {% if not loggedin %}
+        <a href="login">Login/Register</a>
+    {% endif %}
+
+    <p>
+        Hello, my name is Luke, I started this website as a way for me to record my fuel usage over time and generate
+        graphs to visualise it. In the future I plan to add a method of uploading a picture and using a service like
+        Google Lens or a Python library to grab the text from the pump. I am not sure how well this will work on lower
+        quality cameras and it may not be feasible at all (I am only a second year university student).
+        <br> <br>
+        When in deployment, this website will be run from my home and accessed through Cloudflare DNS.
+        <br> <br>
+        If this website grows too large, I may need to pay someone like AWS to host it and the database, if this happens
+        I may need to put an AD at the bottom of the screen to pay for running costs.
+        Don't worry, I will ensure it is not intrusive!
+        <br> <br>
+        If you have any suggestions or ideas that I could implement, please send them to me via the form below, and they
+        may be implemented.
+        <br> <br>
+        If you're curious about any ongoing test I am doing, they might be found <a href="/test">here</a>. You will not
+        be able
+    </p>
+</section>
+
+<section>
+    <h2>Suggestions</h2>
+    <form action="" method="post">
+        <textarea id="suggest-box" name="suggestion" ></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</section>
+
+<section>
+    <h2>Privacy Policy</h2>
+
+    <p>We will never sell your data</p>
+    <p>We will not track across sites</p>
+    <p>
+        We will only contact you if: <br>
+            We believe your password has been compromised<br>
+            We are updating this Privacy Policy<br>
+            You requested us to contact you<br>
+    </p>
+</section>

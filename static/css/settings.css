@@ -1,0 +1,15 @@
+@import "vars.css";
+
+
+.settings-form {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: max-content;
+    margin: auto;
+}
+
+.settings-form-item {
+    padding: 0.5em;
+    text-align: center;
+}
+

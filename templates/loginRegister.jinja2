@@ -1,0 +1,139 @@
+<section>
+    <h2>Registered but not received an email from us? Click <a href="/verify">here</a> for more help</h2>
+</section>
+
+<section class="form">
+
+    {% if error %}
+        <section><h2>Unexpected error, please try again</h2></section>
+    {% endif %}
+
+    {% if register['register_success'] %}
+        <section><h2>User registered, please click the confirmation link in your email then login</h2></section>
+    {% endif %}
+
+    <h2>Login</h2>
+    {% if login %}
+        <section><p>Invalid username or password</p></section>
+    {% endif %}
+    <form method="post" action="/login">
+        <label>
+            Username
+            <br>
+            <input type="text" name="username" required>
+        </label>
+
+        <br>
+        <br>
+
+        <label>
+            Password
+            <br>
+            <input type="password" name="password" required>
+        </label>
+
+        <br>
+        <br>
+
+        <input type="submit" name="submit" value="Login">
+    </form>
+</section>
+
+<section class="form">
+    <h2>Register</h2>
+    <form class="form" method="post" action="/login">
+
+
+            {% if register['username_taken'] %}
+                    <section><p>Username taken</p></section>
+            {% endif %}
+
+            {% if register['invalid_username'] %}
+                    <section><p>Username over 20 characters</p></section>
+            {% endif %}
+        <br>
+
+        <label>
+            Username
+            <br>
+            <input type="text" name="username" required autocomplete="off">
+        </label>
+
+        <br>
+            {% if register['invalid_email'] %}
+                    <section><p>Invalid email</p></section>
+            {% endif %}
+
+            {% if register['email_registered'] %}
+                    <section><p>Email already registered</p></section>
+            {% endif %}
+        <br>
+
+        <label>
+            Email Address
+            <br>
+            <input type="text" name="email" required autocomplete="off">
+        </label>
+
+        <br>
+            {% if register['invalid_password'] %}
+                <section><p>Invalid password</p></section>
+            {% endif %}
+
+            {% if register['password_dont_match'] %}
+                <section><p>Passwords do not match</p></section>
+            {% endif %}
+        <br>
+
+        <label>
+            Password
+            <br>
+            <input type="password" name="password" required autocomplete="off">
+        </label>
+        <br>
+        <br>
+        <label>
+            Confirm Password
+            <br>
+            <input type="password" name="confirm-password" required autocomplete="off">
+        </label>
+
+        <br> <br>
+
+        <label>
+            Liquid units
+            <br>
+            <select name="units" required>
+                <option selected>Litre</option>
+                <option>Gallon</option>
+            </select>
+        </label>
+
+        <br> <br>
+
+        <label>
+            Currency
+            <br>
+            <select name="currency" required>
+                <option selected>£</option>
+                <option>$</option>
+                <option>€</option>
+            </select>
+        </label>
+
+        <br> <br>
+
+        <label>
+            Distance Units
+            <br>
+            <select name="distance" required>
+                <option selected>Miles</option>
+                <option>Kilometers</option>
+            </select>
+        </label>
+
+        <br> <br>
+        <p>By clicking "Submit", you agree to our policies  <a href="/about">here</a></p>
+        <input type="submit" name="submit" value="Register">
+    </form>
+</section>

@@ -1,0 +1,49 @@
+@import "vars.css";
+
+body {
+    font-family: "Calibri, sans-serif", sans-serif;
+
+    background-color: var(--bd-gray);
+    color: whitesmoke;
+    -webkit-text-stroke: 0.00625em black; /* 0.00625em is 0.1px */
+    margin: auto;
+    text-align: center;
+    width: 90vw;
+}
+
+a {
+    color: var(--l-blue);
+    text-decoration: none;
+}
+
+input {
+    background-color: var(--bl-gray);
+    color: white;
+    -webkit-text-stroke: 0.00625em black;
+    border-style: unset;
+    height: 2em;
+    margin-top: 0.5em;
+}
+
+input:hover, input:focus, li a:hover{
+    background-color: var(--gray);
+    outline: none;
+}
+
+input[type="submit"] {
+    height: 3em;
+    width: 5em;
+}
+
+select {
+    background-color: var(--bl-gray);
+    color: white;
+    border: none;
+    margin: 0.1em;
+    padding: 0.5em;
+    text-align: center;
+}
+
+select:hover {
+    background-color: var(--gray);
+}

@@ -1,0 +1,36 @@
+<h2>Settings</h2>
+
+{% if submit %}
+    <p>Settings saved!</p>
+{% endif %}
+
+<form action="/settings" method="post">
+    <section class="settings-form">
+
+        <label for="units" class="settings-form-item">Liquid Units</label>
+        <select name="units" class="settings-form-item">
+            <option {% if units == 'Litre' %} selected {% endif %}>Litre</option>
+            <option {% if units == 'Gallon' %} selected {% endif %}>Gallon</option>
+        </select>
+
+        <label for="currency" class="settings-form-item">Currency</label>
+        <select name="currency" class="settings-form-item">
+            <option {% if currency == '£' %} selected {% endif %}>£</option>
+            <option {% if currency == '$' %} selected {% endif %}>$</option>
+            <option {% if currency == '€' %} selected {% endif %}>€</option>
+        </select>
+
+        <label for="distance" class="settings-form-item">Distance Units</label>
+        <select name="distance" class="settings-form-item">
+            <option {% if distance == 'Miles' %} selected {% endif %}>Miles</option>
+            <option {% if distance == 'Kilometers' %} selected {% endif %}>Kilometers</option>
+        </select>
+
+        <label for="odometer" class="settings-form-item">Odometer Units</label>
+        <select name="odometer" class="settings-form-item">
+            <option {% if odometer == 'Miles' %} selected {% endif %}>Miles</option>
+            <option {% if odometer == 'Kilometers' %} selected {% endif %}>Kilometers</option>
+        </select>
+    </section>
+    <input type="submit" value="Save">
+</form>
