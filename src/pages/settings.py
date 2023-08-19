@@ -14,6 +14,7 @@ def main(db: Database):
     saved = False
     db_user = db.find_one('users', {'username': session['username']})
 
+    # Read pre-exisiting user preferences
     try:
         currency = db_user.get('currency')
         units = db_user.get('units')
@@ -22,6 +23,7 @@ def main(db: Database):
     except Exception as e:
         return '<p>Unexpected error</p>'
 
+    # Get updated user preferences
     if request.method == 'POST':
         try:
             units = request.values['units']
