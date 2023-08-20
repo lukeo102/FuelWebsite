@@ -1,10 +1,11 @@
 <h2>Settings</h2>
 
-{% if submit %}
-    <p>Settings saved!</p>
-{% endif %}
+<form action="/logout/all">
+    <input type="submit" value="Logout Everywhere">
+</form>
 
 <form action="/settings" method="post">
+    <h3>Units</h3>
     <section class="settings-form">
 
         <label for="units" class="settings-form-item">Liquid Units</label>
@@ -34,3 +35,34 @@
     </section>
     <input type="submit" value="Save">
 </form>
+
+{% if submit %}
+    <p>Settings saved!</p>
+{% endif %}
+
+<section id="settings-vehicles-container">
+    <h3>Vehicles</h3>
+    <ul>
+        {% for vehicle in vehicle_list %}
+            <li>
+                <form onsubmit="
+                    return confirm('Are you sure you want to delete this vehicle? It will permanently delete all refuelling data.');
+                " action="/settings/remove_vehicle" method="post">
+                    <input name="nickname" type="text" readonly value="{{ vehicle }}">
+                    <button><img src="/static/img/x.svg" alt="Click to Delete" /></button>
+                </form>
+            </li>
+        {% endfor %}
+        <li>
+            <form action="/settings/add_vehicle" method="post">
+                <input name="new-vehicle" type="text" placeholder="New Vehicle Nickname">
+                <button type="submit"><img src="/static/img/plus.svg" alt="Click to Add" /></button>
+            </form>
+        </li>
+    </ul>
+
+    {% if vehicle_exists %}<p>You already have a vehicle with this nickname</p>{% endif %}
+    {% if vehicle_added %}<p>Vehicle has been saved!</p>{% endif %}
+    {% if vehicle_removed %}<p>Vehicle has been removed!</p>{% endif %}
+
+</section>

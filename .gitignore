@@ -5,3 +5,6 @@
 *.bin
 venv/*
 venv*
+.idea
+.idea*
+.idea/*

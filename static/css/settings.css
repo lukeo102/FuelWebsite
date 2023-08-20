@@ -1,6 +1,5 @@
 @import "vars.css";
 
-
 .settings-form {
     display: grid;
     grid-template-columns: auto auto;
@@ -13,3 +12,43 @@
     text-align: center;
 }
 
+#settings-vehicles-container ul {
+    list-style: none;
+    width: fit-content;
+    margin: auto;
+    padding: 0;
+}
+
+#settings-vehicles-container ul li {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    padding: 0.125em;
+}
+
+#settings-vehicles-container ul li {
+    background: var(--bl-gray);
+}
+
+#settings-vehicles-container ul li form input {
+    padding: 0;
+    margin: 0;
+}
+
+#settings-vehicles-container ul li form button {
+    background: transparent;
+    padding: 0;
+    border: none;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#settings-vehicles-container ul li form button:hover {
+    cursor: pointer;
+}
+
+#settings-vehicles-container ul li form button img {
+    height: 2em;
+    width: 2em;
+    vertical-align: middle;
+}

@@ -4,21 +4,28 @@
         <p>Data Received</p>
     {% endif %}
 {% endif %}
-<p>You can change your units and currency in settings</p>
+<p>You can change your units, currency, and add vehicles in settings</p>
 <form action="/" method="post">
+        <label for="vehicle">Vehicle</label>
+        <br>
+        <select name="vehicle">
+            {% for vehicle in vehicle_list %}<option>{{ vehicle }}</option> {% endfor %}
+        </select>
+        <br>
+        <br>
         <label for="amount">Amount ({{ units }})</label>
         <br>
-        <input type="text" name="amount" required autocomplete="off">
+        <input type="number" name="amount" required autocomplete="off">
         <br>
         <br>
         <label for="cost">Cost ({{ currency }})</label>
         <br>
-        <input type="text" name="cost" required autocomplete="off">
+        <input type="number" name="cost" required autocomplete="off">
         <br>
         <br>
         <label for="odometer">Current Odometer Reading ({{ odometer }})</label>
         <br>
-        <input type="text" name="odometer" required autocomplete="off">
+        <input type="number" name="odometer" required autocomplete="off">
         <br>
         <br>
         <input type="submit" name="submit" value="Record">

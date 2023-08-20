@@ -1,4 +1,4 @@
-from flask import Flask, session, redirect, url_for
+from flask import Flask, session, redirect, url_for, request
 from src.pages import login, test, about, previous_fill_up, record_fill_up, settings, verify
 from .login import validate_token
 from ..log import Log
@@ -18,7 +18,7 @@ class Manager:
         app = self.app
         log = self.log
 
-        def loggedin_handle(page):
+        def loggedin_handle(page, section=None):
             try:
                 valid_token = validate_token(session['token'], session['username'], self.db)
 
@@ -38,6 +38,15 @@ class Manager:
 
                 case "settings":
                     return settings.main(db=self.db)
+
+                case "remove_vehicle":
+                    return settings.remove_vehicle(db=self.db)
+
+                case "add_vehicle":
+                    return settings.add_vehicle(db=self.db)
+
+                case "history_items":
+                    return previous_fill_up.section_handler(self.db, section)
 
         @app.route('/test', methods=['GET', 'POST'])
         def test_route():
@@ -60,19 +69,37 @@ class Manager:
             return loggedin_handle("fill_up")
 
         @app.route('/history', methods=['GET', 'POST'])
-        def prev_fill_up_route():
+        @app.route('/history/<string:sub>', methods=['GET', 'POST'])
+        def prev_fill_up_route(sub=None):
+            if sub is not None:
+                return loggedin_handle("history_items", sub)
+
             return loggedin_handle("prev_fill_up")
 
         @app.route('/settings', methods=['GET', 'POST'])
-        def settings_route():
-            return loggedin_handle("settings")
+        @app.route('/settings/<string:sub>', methods=['GET', 'POST'])
+        def settings_route(sub=None):
+            match sub:
+                case "add_vehicle":
+                    return loggedin_handle("add_vehicle")
+                case "remove_vehicle":
+                    return loggedin_handle("remove_vehicle")
+                case _:
+                    return loggedin_handle("settings")
 
         @app.route('/logout', methods=['GET', 'POST'])
+        @app.route('/logout/all', methods=['GET', 'POST'])
         def logout_route():
-            try:
-                self.db.remove('token', {'token': session['token']})
-            except KeyError as e:
-                pass
+            if request.path == "/logout/all":
+                more = 1
+                while more:
+                    more = self.db.remove("token", {"username": session['username']}).deleted_count
+
+            else:
+                try:
+                    self.db.remove('token', {'token': session['token']})
+                except KeyError as e:
+                    pass
 
             session.clear()
             return redirect(url_for("login_route"))

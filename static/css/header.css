@@ -49,7 +49,7 @@
   }
 
   .welcome-container img:hover {
-    cursor: grabbing;
+    cursor: pointer;
   }
 /*}*/
 
