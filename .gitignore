@@ -1,3 +1,5 @@
+production.sh
+
 # Project exclude paths
 /log/
 /old/

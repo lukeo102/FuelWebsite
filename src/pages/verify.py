@@ -1,6 +1,6 @@
 import smtplib
 from flask import request, url_for, redirect, render_template
-from base64 import b64encode
+
 from src.database import Database
 from os import urandom
 from hashlib import md5
@@ -31,12 +31,12 @@ def default_page(error=False, register=False, verify_error=False):
 
 def generate_code(username):
     random_num = str(urandom(32))
-    hash = md5(b64encode(username + random_num))
-    return hash
+    hash = md5(f"{username}{random_num}".encode())
+    return hash.hexdigest()
 
 
 def send_code(code, email, username):
-    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server = smtplib.SMTP('smtp.gmail.com', 5)
     server.ehlo()
     server.starttls()
 
@@ -61,7 +61,7 @@ def send_code(code, email, username):
 
     server.sendmail("lofuelwebs@gmail.com", "lukeormiston@gmail.com", email_text)
     server.close()
-    server.quit()
+    # server.quit()
 
 
 def main(db: Database):

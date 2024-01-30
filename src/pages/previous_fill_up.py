@@ -73,7 +73,6 @@ def all_section(db: Database):
                         details[vehicle['nickname']][i][key] = value
 
         print(details)
-        raise KeyError
         return [details]
 
     except Exception as e:

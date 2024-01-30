@@ -105,4 +105,5 @@ class Manager:
             session.clear()
             return redirect(url_for("login_route"))
 
-        self.app.run(host="0.0.0.0", port=self.port, debug=True)
+        if __name__ == "__main__":
+            self.app.run(host="0.0.0.0", port=self.port, debug=True)

@@ -126,7 +126,7 @@ def register(db: Database):
 
     # Input validation, 0 < username < 21, email exists, password exists and matches confirm password
     # Username
-    if not 1 <= len(details['username']) <= 20:
+    if not 1 <= len(details['username']):
         status['invalid_username'] = True
         error = True
 
@@ -138,7 +138,7 @@ def register(db: Database):
         error = True
 
     # Password
-    if not 0 > len(details['password']):
+    if not 0 < len(details['password']):
         status['invalid_password'] = True
         error = True
 

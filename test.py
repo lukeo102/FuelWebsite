@@ -2,7 +2,7 @@
 from src.database import Database
 
 db = Database()
-for item in db.find("fill_ups", {"username": "luke", "vehicle": "CB650F"}):
+for item in db.find("users", {}):
     print(item)
 
 
