@@ -138,7 +138,7 @@ def register(db: Database):
         error = True
 
     # Password
-    if not 1 <= len(details['password']) <= 60:
+    if not 0 > len(details['password']):
         status['invalid_password'] = True
         error = True
 
@@ -167,6 +167,7 @@ def register(db: Database):
     else:
         # Register user
         hashed, salt = hash_pass(details['password'])
+        verification_code = generate_code(details['username'])
         data = {
             'username': details['username'],
             'password': hashed,
@@ -176,31 +177,18 @@ def register(db: Database):
             'distance': details['distance'],
             'currency': details['currency'],
             'odometer': details['distance'],
-            'verified': False
+            'verified': False,
+            'verification_code': verification_code
         }
 
         db.insert('users', data)
-
-        verify_code = generate_code(details['username'])
-
-        data = {
-            'username': details['username'],
-            'email': details['email'],
-            'code': verify_code
-        }
-
-        db.insert('verify', data)
-
-        send_code(
-            generate_code(details['username']),
-            details['email'],
-            details['username']
-        )
+        send_code(verification_code, details['email'], details['username'])
 
         return redirect(url_for('verify_route', register=True))
 
 
 def login(db: Database):
+    # If user doesnt
     details = get_request_data(db=db)
     if details is None:
         return render_login_register(error=True)

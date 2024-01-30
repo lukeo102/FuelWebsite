@@ -2,7 +2,9 @@
 from src.database import Database
 
 db = Database()
-more = 1
-while more:
-    print("DELETING")
-    more = db.remove("fill_ups", {"username": "Luke", "vehicle": "test2"}).deleted_count
+for item in db.find("fill_ups", {"username": "luke", "vehicle": "CB650F"}):
+    print(item)
+
+
+print("done")
+exit(2)

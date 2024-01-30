@@ -4,11 +4,18 @@ from os.path import isfile, join, isdir
 
 
 class Log:
-    log_level = {
-        1: "\033[35;1m[DEBUG]",  # Debug
-        2: "\033[0;36m[INFO]",  # Info
-        3: "\033[38;5;208m[WARNING]",  # Warning
-        4: "\033[38;2;220;20;20m[ERROR]"  # Error
+    log_level_colours = {
+        1: "\033[35;1m",  # Debug
+        2: "\033[0;36m",  # Info
+        3: "\033[38;5;208m",  # Warning
+        4: "\033[38;2;220;20;20m"  # Error
+    }
+
+    log_level_text = {
+        1: "[DEBUG]",
+        2: "[INFO]",
+        3: "[WARNING]",
+        4: "[ERROR]"
     }
 
     time = lambda: datetime.now().strftime('%H:%M:%S')
@@ -56,9 +63,9 @@ class Log:
         if self.day != date.today().strftime('%Y-%m-%d'):  # Check whether log roll over is required
             self.reset_file()
 
-        message = f'[{Log.time()}]{self.log_level[level]} {message} \033[00m\n'
+        message = f'[{Log.time()}]{self.log_level_text[level]} {message}\n'
         if console:
-            print(f"{self.id}{message[:-1]}")
+            print(f"{self.id}{self.log_level_colours[level]}{message[:-1]} \033[00m")
 
         self.file.write(message)
         self.file.flush()

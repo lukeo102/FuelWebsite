@@ -45,8 +45,9 @@ class Manager:
                 case "add_vehicle":
                     return settings.add_vehicle(db=self.db)
 
-                case "history_items":
+                case "query":
                     return previous_fill_up.section_handler(self.db, section)
+
 
         @app.route('/test', methods=['GET', 'POST'])
         def test_route():
@@ -72,7 +73,7 @@ class Manager:
         @app.route('/history/<string:sub>', methods=['GET', 'POST'])
         def prev_fill_up_route(sub=None):
             if sub is not None:
-                return loggedin_handle("history_items", sub)
+                return loggedin_handle("query", sub)
 
             return loggedin_handle("prev_fill_up")
 

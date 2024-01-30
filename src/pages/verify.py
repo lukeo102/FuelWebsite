@@ -1,5 +1,6 @@
 import smtplib
 from flask import request, url_for, redirect, render_template
+from base64 import b64encode
 from src.database import Database
 from os import urandom
 from hashlib import md5
@@ -30,7 +31,7 @@ def default_page(error=False, register=False, verify_error=False):
 
 def generate_code(username):
     random_num = str(urandom(32))
-    hash = md5(username + random_num)
+    hash = md5(b64encode(username + random_num))
     return hash
 
 

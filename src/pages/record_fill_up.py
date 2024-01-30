@@ -45,7 +45,7 @@ def main(db: Database):
     currency = user_db.get('currency')
     odo_unit = user_db.get('odometer')
 
-    if amount is not None and cost is not None and odometer is not None:
+    if amount is not None and cost is not None and odometer is not None and vehicle is not None:
         process_new_fillup(amount, cost, currency, units, odometer, odo_unit, vehicle, db)
         return redirect(url_for('default_route') + "?submitted=True")
 

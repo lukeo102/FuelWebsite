@@ -1,0 +1,8 @@
+<section>
+
+    {% for vehicle in vehicles %}
+    <h2>{{ vehicle }}</h2>
+    {% for js in javascript %}
+        <script type="text/javascript" src="{{ js }}"></script>
+    {% endfor %}
+</section>

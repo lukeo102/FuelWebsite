@@ -5,10 +5,11 @@
 
 <section id="history-section-selector">
     <label for="section">Section</label>
-    <select name="section">
-        <option onclick="selector(this);" value="clear" selected="true">Please Select</option>
-        <option onclick="selector(this);" value="efficiency">Fuel Efficiency</option>
-        <option onclick="selector(this);" value="price">Fuel Price</option>
+    <select name="section" onchange="selector(this)">
+        <option value="clear" selected="true">Please Select</option>
+        <option value="efficiency">Fuel Efficiency</option>
+        <option value="price">Fuel Price</option>
+        <option value="all">Show All Previous Fill Ups</option>
     </select>
 </section>
 
@@ -16,4 +17,4 @@
 
 </section>
 
-<script type="text/javascript" src="/static/javascript/history_selector.js"></script>
+<script type="text/javascript" src="/static/javascript/history.js"></script>
