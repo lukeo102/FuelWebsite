@@ -11,9 +11,6 @@ def main(db: Database):
            + render_template('history/history_header.jinja2')
 
     if request.method == 'post':
-        if session['username'] is None:
-            return "ERROR 401 Unauthorised"
-
         section = request.values['section']
 
     return page

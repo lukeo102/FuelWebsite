@@ -11,7 +11,7 @@ from src.constants import CWD
 
 app = Flask(__name__, template_folder=f'{CWD}/templates', static_folder=f'{CWD}/static')
 log = Log(Id="Manager", init_msg=False)
-port = 8080
+port = 5005
 app.secret_key = Database().get_session_secret()
 
 log.append_log(f"Current working directory: {CWD}")
@@ -121,11 +121,6 @@ def logout_route():
 
     session.clear()
     return redirect(url_for("login_route"))
-
-
-@app.errorhandler(HTTPException)
-def handle_bad_request():
-    pass
 
 
 if __name__ == "__main__":
