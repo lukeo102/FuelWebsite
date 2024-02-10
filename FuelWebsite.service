@@ -1,0 +1,13 @@
+[Unit]
+Description=FuelWebsite deployed of uWSGI
+After=network.target
+
+[Service]
+User=server
+Group=server
+WorkingDirectory=/mnt/hdd/projects/FuelWebsite
+Environment="PATH=/mnt/hdd/projects/FuelWebsite/venv/bin"
+ExecStart=/mnt/hdd/projects/FuelWebsite/production.sh
+
+[Install]
+WantedBy=multi-user.target

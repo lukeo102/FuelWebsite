@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source venv/bin/activate
-uwsgi --socket 192.168.0.101:5000 --protocol=http -w wsgi:app --ini FuelWebsite.ini
+uwsgi --socket 0.0.0.0:5000 -w wsgi:app --ini FuelWebsite.ini
