@@ -1,6 +1,8 @@
 import http
 
-from flask import request, render_template, session, jsonify
+from flask import request, render_template, session, jsonify, Response
+from bson.objectid import ObjectId
+
 from ..database import Database
 from .utils import render_head, render_header
 from ..log import Log
@@ -34,21 +36,25 @@ def section_handler(db: Database, section, log: Log = None):
 def delete_fill_up(db: Database):
     data = request.args
     try:
-        id = data['_id']
+        id = ObjectId(data['id'])
 
     except KeyError:
-        return http.HTTPStatus.BAD_REQUEST
+        print("bad request")
+        return Response(status=http.HTTPStatus.BAD_REQUEST)
 
     try:
         if db.remove("fill_ups", {"_id": id, "username": session['username']}).deleted_count > 0:
-            return http.HTTPStatus.OK
+            print("OK")
+            return Response(status=http.HTTPStatus.OK)
 
         else:
-            return http.HTTPStatus.FORBIDDEN
+            print("forbidden")
+            return Response(status=http.HTTPStatus.FORBIDDEN)
 
 
     except Exception as e:
-        return http.HTTPStatus.BAD_REQUEST
+        print("bad request")
+        return Response(status=http.HTTPStatus.BAD_REQUEST)
 
 
 

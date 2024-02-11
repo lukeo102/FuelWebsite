@@ -1,7 +1,7 @@
-<h2>Settings</h2>
+0<h2>Settings</h2>
 
 <form action="/logout/all">
-    <input type="submit" value="Logout Everywhere">
+    <input type="submit" onclick="return confirm('Are you sure you want to logout everywhere?\nYou will have to log back in on every device.');" value="Logout Everywhere">
 </form>
 
 <form action="/settings" method="post">

@@ -14,7 +14,7 @@ function deleteFillUp(element) {
         var request = new XMLHttpRequest();
         request.onreadystatechange = function() {
             if (request.readyState === 4) { // ready state 4 == DONE
-
+                return all();
             } else { // if not done display loading bar/circle/thingy
                 // loading bar
             }

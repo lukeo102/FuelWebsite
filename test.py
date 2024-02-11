@@ -1,10 +1,6 @@
 
 from src.database import Database
-
+from bson.objectid import ObjectId
 db = Database()
-for item in db.find("users", {}):
-    print(item)
-
-
-print("done")
-exit(2)
+id = ObjectId('65b41cc83d8ea0323f8529b1')
+print(db.find_one("fill_ups", {"_id": id, "username": "luke"}))
